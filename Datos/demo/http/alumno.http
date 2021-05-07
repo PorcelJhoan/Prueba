@@ -1,0 +1,38 @@
+GET http://localhost:8082/persona/4
+###
+GET http://localhost:8082/persona
+###
+POST http://localhost:8082/persona
+Content-Type:application/json
+Accept:application/json
+
+{
+   "id_persona":4,
+   "nombre": "Rolando",
+   "apellido_paterno":"Perez",
+   "apellido_materno":"Flores",
+   "apellido_casado":"",
+   "telefono":"73225878",
+   "fecha_nacimiento":1,
+   "id_direccion":1,
+   "correo_electronico":"Rolando@gmail.com"
+}
+###
+DELETE http://localhost:8082/persona/4
+###
+PUT http://localhost:8082/persona
+Content-Type:application/json
+Accept:application/json
+
+{
+  "id_persona":4,
+  "nombre": "Rolando",
+  "apellido_paterno":"Peres",
+  "apellido_materno":"Florez",
+  "apellido_casado":"",
+  "telefono":"73225878",
+  "fecha_nacimiento":1,
+  "id_direccion":1,
+  "correo_electronico":"Rolando@gmail.com"
+}
+###
