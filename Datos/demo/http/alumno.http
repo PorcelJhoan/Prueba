@@ -7,15 +7,19 @@ Content-Type:application/json
 Accept:application/json
 
 {
-   "id_persona":4,
+   "persona_id":1,
+   "direccion_id":1,
+   "tipo_identificacion_id": 1,
    "nombre": "Rolando",
    "apellido_paterno":"Perez",
    "apellido_materno":"Flores",
    "apellido_casado":"",
    "telefono":"73225878",
-   "fecha_nacimiento":1,
-   "id_direccion":1,
-   "correo_electronico":"Rolando@gmail.com"
+   "correo_electronico":"Rolando@gmail.com",
+   "numero_identificacion": "51210212 LP",
+   "fecha_nacimiento":"10/5/2021"
+
+
 }
 ###
 DELETE http://localhost:8082/persona/4
@@ -33,6 +37,6 @@ Accept:application/json
   "telefono":"73225878",
   "fecha_nacimiento":1,
   "id_direccion":1,
-  "correo_electronico":"Rolando@gmail.com"
+  "correo_electronico":"Rolandoo@gmail.com"
 }
 ###
