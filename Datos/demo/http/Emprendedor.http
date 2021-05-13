@@ -1,0 +1,28 @@
+GET http://localhost:8082/Emprendedor/1
+###
+GET http://localhost:8082/Emprendedor
+###
+POST http://localhost:8082/Emprendedor
+Content-Type:application/json
+Accept:application/json
+
+{
+  "imagen_id":1,
+  "tipo_emprendimiento_id":1,
+  "contrato_id":1,
+  "usuario_id": 11
+}
+###
+DELETE http://localhost:8082/Emprendedor/1
+###
+PUT http://localhost:8082/Emprendedor
+Content-Type:application/json
+Accept:application/json
+
+{
+  "imagen_id":1,
+  "tipo_emprendimiento_id":1,
+  "contrato_id":1,
+  "usuario_id": 11
+}
+###

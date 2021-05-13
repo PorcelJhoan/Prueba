@@ -7,8 +7,8 @@ Content-Type:application/json
 Accept:application/json
 
 {
-  "src_imagen":"/img/imagen1.jpg",
-  "nombre": "imagen1"
+  "src_imagen":"/img/imagen3.jpg",
+  "nombre": "imagen3"
 }
 ###
 DELETE http://localhost:8082/imagen/1
@@ -18,7 +18,8 @@ Content-Type:application/json
 Accept:application/json
 
 {
-  "tipo_usuario_id":2,
-  "usuario": "usuario 6"
+  "imagen_id": 2,
+  "src_imagen":"/img/imagen2.jpg",
+  "nombre": "imagen2"
 }
 ###

@@ -13,7 +13,7 @@ import waliki.demo.dto.Imagen;
 import java.sql.SQLException;
 import java.util.List;
 
-@Service
+@RestController
 public class ImagenController {
     @Autowired
     private GestionImagenBl gestionImagenBl;

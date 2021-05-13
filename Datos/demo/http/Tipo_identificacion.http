@@ -1,0 +1,25 @@
+GET http://localhost:8082/Tipo_identificacion/1
+###
+GET http://localhost:8082/Tipo_identificacion
+###
+POST http://localhost:8082/Tipo_identificacion
+Content-Type:application/json
+Accept:application/json
+
+{
+  "tipo_identificacion":"Pasaporte"
+
+}
+###
+DELETE http://localhost:8082/Tipo_identificacion/1
+###
+PUT http://localhost:8082/Tipo_identificacion
+Content-Type:application/json
+Accept:application/json
+
+{
+  "tipo_identificacion_id": 2,
+  "tipo_identificacion":"Pasaporte"
+
+}
+###

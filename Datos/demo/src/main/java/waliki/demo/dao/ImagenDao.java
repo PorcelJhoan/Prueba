@@ -92,7 +92,7 @@ public class ImagenDao {
             Connection con=dataSource.getConnection();
             Statement stat =con.createStatement();
             PreparedStatement preesta;
-            preesta = con.prepareStatement("UPDATE imagen SET src_imagen,nombre WHERE imagen_id=?");
+            preesta = con.prepareStatement("UPDATE imagen SET src_imagen=?,nombre=? WHERE imagen_id=?");
             preesta.setInt(3, ob.imagen_id);
             preesta.setString(1, ob.src_imagen);
             preesta.setString(2, ob.nombre);
