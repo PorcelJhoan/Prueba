@@ -23,7 +23,10 @@ public class PersonaController {
 
     @GetMapping("/home")
     public String Home(Model model){
-        return "index";
+        model.asMap().clear();
+        model.addAttribute("contentPage","/index.html");
+
+        return "redirect:index.html";
     }
 
 
