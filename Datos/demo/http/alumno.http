@@ -1,4 +1,4 @@
-GET http://localhost:8082/persona/4
+GET http://localhost:8082/persona/32
 ###
 GET http://localhost:8082/persona
 ###
@@ -7,24 +7,58 @@ Content-Type:application/json
 Accept:application/json
 
 {
-   "persona_id":1,
    "direccion_id":1,
    "tipo_identificacion_id": 1,
-   "nombre": "Rolando",
-   "apellido_paterno":"Perez",
-   "apellido_materno":"Flores",
+   "nombre": "Sebastian",
+   "apellido_paterno":"Lopez",
+   "apellido_materno":"Villa",
    "apellido_casado":"",
    "telefono":"73225878",
-   "correo_electronico":"Rolando@gmail.com",
-   "numero_identificacion": "51210212 LP",
-   "fecha_nacimiento":"10/5/2021"
+   "correo_electronico":"Orlando@gmail.com",
+   "numero_identificacion": "4545452 LP",
+   "fecha_nacimiento":"1958-09-28"
 
 
 }
 ###
-DELETE http://localhost:8082/persona/4
+DELETE http://localhost:8082/persona/44
 ###
 PUT http://localhost:8082/persona
+Content-Type:application/json
+Accept:application/json
+
+{
+  "id_persona":4,
+  "nombre": "Rolando",
+  "apellido_paterno":"Peres",
+  "apellido_materno":"Florez",
+  "apellido_casado":"",
+  "telefono":"73225878",
+  "fecha_nacimiento":1,
+  "id_direccion":1,
+  "correo_electronico":"Rolandoo@gmail.com"
+}
+###
+GET http://localhost:8082/usuario/12
+###
+GET http://localhost:8082/usuario
+###
+POST http://localhost:8082/usuario
+Content-Type:application/json
+Accept:application/json
+
+{
+  "tipo_usuario_id":2,
+  "usuario": "usuario 6",
+  "contrasena":"contrasena 6",
+  "fecha_registro":"1988-09-28",
+  "codigo_verificacion":"dsaf",
+  "persona_id": 4
+}
+###
+DELETE http://localhost:8082/usuario/44
+###
+PUT http://localhost:8082/usuario
 Content-Type:application/json
 Accept:application/json
 

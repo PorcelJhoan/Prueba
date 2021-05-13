@@ -15,16 +15,19 @@ import javax.sql.DataSource;
 @Service
 public class PersonaDao {
 
+    @Autowired
+    private SequenceDao sequenceDao;
 
     @Autowired
-    public static DataSource dataSource;
+    public DataSource dataSource;
 
-    public static Persona CrearPersona(Persona ob){
+    public Persona CrearPersona(Persona ob)throws SQLException{
+        ob.persona_id=sequenceDao.getLLaveprincipal("persona");
         try{
             Connection con=dataSource.getConnection();
-            Statement stat =con.createStatement();
+
             PreparedStatement preesta;
-            preesta = con.prepareStatement("INSERT INTO persona(persona_id, nombre, apellido_paterno, apellido_materno, apellido_casado, telefono, fecha_nacimiento, direccion_id, correo_electronico,tipo_identificacion_id,numero_identificacion)" + " VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            preesta = con.prepareStatement("INSERT INTO persona(persona_id, nombre, apellido_paterno, apellido_materno, apellido_casado, telefono, fecha_nacimiento, direccion_id, correo_electronico,tipo_identificacion_id,numero_identificacion)" + " VALUES (?,?,?,?,?,?,TO_DATE(?,'YYYYMMDD'),?,?,?,?)");
             preesta.setInt(1, ob.persona_id);
             preesta.setString(2, ob.nombre);
             preesta.setString(3, ob.apellido_paterno);
@@ -44,7 +47,7 @@ public class PersonaDao {
         return ob;
     }
 
-    public static List<Persona> SeleccionarTodasPersonas() throws SQLException {
+    public List<Persona> SeleccionarTodasPersonas() throws SQLException {
         List<Persona> array=new ArrayList<>();
 
         try{
@@ -53,7 +56,7 @@ public class PersonaDao {
             ResultSet res= stat.executeQuery("select persona_id, nombre, apellido_paterno, apellido_materno, apellido_casado, telefono, fecha_nacimiento, direccion_id, correo_electronico,tipo_identificacion_id,numero_identificacion from persona ");
             while(res.next()){
                 Persona ob=new Persona();
-                ob.persona_id=res.getInt("id_persona");
+                ob.persona_id=res.getInt("persona_id");
                 ob.nombre=res.getString("nombre");
                 ob.apellido_paterno=res.getString("apellido_paterno");
                 ob.apellido_materno=res.getString("apellido_materno");
@@ -69,34 +72,35 @@ public class PersonaDao {
 
         return array;
     }
-    public static Persona SeleccionarPersona(Integer PersonId) throws SQLException {
-        System.out.println("variable :"+PersonId);
+    public Persona SeleccionarPersona(Integer PersonId) throws SQLException {
+
         Persona ob=new Persona();
         try{
             Connection con=dataSource.getConnection();
             Statement stat =con.createStatement();
-            ResultSet res= stat.executeQuery("select id_persona, nombre, apellido_paterno, apellido_materno, apellido_casado, telefono, fecha_nacimiento, id_direccion, correo_electronico from persona WHERE id_persona="+PersonId);
+            ResultSet res= stat.executeQuery("select persona_id, nombre, apellido_paterno, apellido_materno, apellido_casado, telefono, fecha_nacimiento, direccion_id, correo_electronico from persona WHERE persona_id="+PersonId);
             if(res.next()){
-
-                ob.persona_id=res.getInt("id_persona");
+                ob.persona_id=res.getInt("persona_id");
                 ob.nombre=res.getString("nombre");
                 ob.apellido_paterno=res.getString("apellido_paterno");
                 ob.apellido_materno=res.getString("apellido_materno");
                 ob.telefono=res.getString("telefono");
                 ob.correo_electronico=res.getString("correo_electronico");
+            }else{
+                ob=null;
             }
         }catch (Exception ex){
             ex.printStackTrace();
         }
         return ob;
     }
-    public static Persona EliminarPersona(Integer PersonId) throws SQLException {
+    public Persona EliminarPersona(Integer PersonId) throws SQLException {
         System.out.println("variable :"+PersonId);
         Persona ob=new Persona();
         try{
             Connection con=dataSource.getConnection();
             Statement stat =con.createStatement();
-            stat.execute("delete from persona WHERE id_persona="+PersonId);
+            stat.execute("delete from persona WHERE persona_id="+PersonId);
 
         }catch (Exception ex){
             ex.printStackTrace();
@@ -105,13 +109,13 @@ public class PersonaDao {
         return ob;
     }
 
-    public static Persona ActualizarPersona(Persona ob) throws SQLException {
+    public Persona ActualizarPersona(Persona ob) throws SQLException {
 
         try{
             Connection con=dataSource.getConnection();
             Statement stat =con.createStatement();
             PreparedStatement preesta;
-            preesta = con.prepareStatement("UPDATE persona SET nombre =?, apellido_paterno=?, apellido_materno=?, apellido_casado=?, telefono=?, fecha_nacimiento=?, id_direccion=?, correo_electronico=? WHERE id_persona=?");
+            preesta = con.prepareStatement("UPDATE persona SET nombre =?, apellido_paterno=?, apellido_materno=?, apellido_casado=?, telefono=?, fecha_nacimiento=?, direccion_id=?, correo_electronico=? WHERE persona_id=?");
             preesta.setInt(9, ob.persona_id);
             preesta.setString(1, ob.nombre);
             preesta.setString(2, ob.apellido_paterno);

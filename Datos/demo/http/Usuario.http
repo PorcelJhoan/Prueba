@@ -1,0 +1,35 @@
+GET http://localhost:8082/usuario/1
+###
+GET http://localhost:8082/usuario
+###
+POST http://localhost:8082/usuario
+Content-Type:application/json
+Accept:application/json
+
+{
+  "tipo_usuario_id":2,
+  "usuario": "usuario 6",
+  "contrasena":"contrasena 6",
+  "fecha_registro":"1988-09-28",
+  "codigo_verificacion":"",
+  "persona_id": 4
+}
+###
+DELETE http://localhost:8082/usuario/44
+###
+PUT http://localhost:8082/usuario
+Content-Type:application/json
+Accept:application/json
+
+{
+  "id_persona":4,
+  "nombre": "Rolando",
+  "apellido_paterno":"Peres",
+  "apellido_materno":"Florez",
+  "apellido_casado":"",
+  "telefono":"73225878",
+  "fecha_nacimiento":1,
+  "id_direccion":1,
+  "correo_electronico":"Rolandoo@gmail.com"
+}
+###

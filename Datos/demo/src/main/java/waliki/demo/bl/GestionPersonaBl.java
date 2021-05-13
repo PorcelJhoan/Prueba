@@ -1,5 +1,6 @@
 package waliki.demo.bl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import waliki.demo.dao.PersonaDao;
 import waliki.demo.dto.Persona;
@@ -10,23 +11,27 @@ import java.util.List;
 
 @Service
 public class GestionPersonaBl {
-    public static Persona CrearPersona(Persona persona){
-        return PersonaDao.CrearPersona(persona);
-    }
-    public static List<Persona> SeleccionarTodasPersonas() throws SQLException {
-        return PersonaDao.SeleccionarTodasPersonas();
-    }
-    public static Persona SeleccionarPersona(Integer PersonId) throws SQLException {
 
-        return PersonaDao.SeleccionarPersona(PersonId);
+    @Autowired
+    PersonaDao personaDao;
+
+    public Persona CrearPersona(Persona persona)throws SQLException{
+        return personaDao.CrearPersona(persona);
     }
-    public static Persona EliminarPersona(Integer PersonId) throws SQLException {
+    public List<Persona> SeleccionarTodasPersonas() throws SQLException {
+        return personaDao.SeleccionarTodasPersonas();
+    }
+    public Persona SeleccionarPersona(Integer PersonId) throws SQLException {
 
-        return PersonaDao.EliminarPersona(PersonId);
+        return personaDao.SeleccionarPersona(PersonId);
+    }
+    public Persona EliminarPersona(Integer PersonId) throws SQLException {
+
+        return personaDao.EliminarPersona(PersonId);
     }
 
-    public static Persona ActualizarPersona(Persona ob) throws SQLException {
+    public Persona ActualizarPersona(Persona ob) throws SQLException {
 
-        return PersonaDao.ActualizarPersona(ob);
+        return personaDao.ActualizarPersona(ob);
     }
 }
